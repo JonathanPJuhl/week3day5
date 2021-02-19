@@ -36,4 +36,3 @@ document.getElementById("fetchMoviesByID").addEventListener("click", function(){
             document.getElementById("movieByID").innerHTML=makeSingleTableRow(data);
         })})
 
-//for build
