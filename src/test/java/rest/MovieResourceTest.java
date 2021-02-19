@@ -4,6 +4,8 @@ import entities.Movie;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
 import io.restassured.parsing.Parser;
 import java.net.URI;
 import javax.persistence.EntityManager;
@@ -13,7 +15,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import static org.hamcrest.Matchers.equalTo;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -102,4 +104,41 @@ public class MovieResourceTest {
     public void doThisWhenYouHaveProblems(){
         given().log().all().when().get("/movie/all").then().log().body();
     }
+
+    @Test
+    public void testGetAll(){
+        given()
+                .contentType("application/json")
+                .get("/movie/all").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("", hasSize(3));
+    }
+
+    @Test
+    public void testByID(){
+        given()
+                .contentType("application/json")
+                .get("/movie/byid/"+m1.getId()).then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("title", equalTo("aa"));
+    }
+    @Test
+    @Disabled
+    public void getAllWithActors(){
+
+                String[] all = new String[]{"A","B","C","D"};
+        given()
+                .when()
+                .get("/movie/all")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("actors[]", isIn(all));
+    }
+
 }
+
+
+
