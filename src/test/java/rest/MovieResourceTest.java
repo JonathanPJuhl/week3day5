@@ -119,10 +119,23 @@ public class MovieResourceTest {
     public void testByID(){
         given()
                 .contentType("application/json")
-                .get("/movie/byid/"+m1.getId()).then()
+                .get("/movie/byid/"+m1.getId())
+                .then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("title", equalTo("aa"));
+    }
+    @Test
+    @Disabled
+    //Somehow won't work
+    public void testByTitle(){
+        given()
+                .contentType("application/json")
+                .get("/movie/bytitle/"+m2.getTitle())
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("year", equalTo(m2.getYear()));
     }
     @Test
     @Disabled

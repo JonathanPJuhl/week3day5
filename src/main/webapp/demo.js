@@ -11,7 +11,7 @@ function makeUl(name){
 const result = makeUl(name);
 console.log(result)
 
-/*document.getElementById("btn").onclick = function(){
+document.getElementById("btn").onclick = function(){
     fetch("/api/movie/all")
         .then(res=>res.json())
         .then(data=> {
@@ -19,8 +19,8 @@ console.log(result)
             document.getElementById("data").innerHTML=list;
         })
 
-}*/
-/*document.querySelector(".btn").addEventListener("toggle", function(){
+}
+/*document.getElementById("fetchAllMovies").addEventListener("click", function(){
     fetch("/api/movie/all")
         .then(res=>res.json())
         .then(data=> {
