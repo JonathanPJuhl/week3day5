@@ -108,7 +108,6 @@
                 <configuration>          
                     <server>TomcatServer</server>
                     <url>${remote.server}</url>
-                    <path>/Week3Day5</path>
                     <username>${remote.user}</username>
                     <password>${remote.password}</password>
                     <update>true</update>    
