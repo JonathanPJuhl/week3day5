@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="devopsWeek3Day5:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>devopsWeek3Day5</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="devopsWeek3Day5-1.0.1.war">
+      <element id="artifact" artifact-name="devopsWeek3Day5:war exploded" />
+    </root>
+  </artifact>
+</component>
